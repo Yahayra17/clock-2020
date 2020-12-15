@@ -3,55 +3,36 @@
     <head>
         <title>JS - Digital CLock</title>
         <style type="text/css">
+        /*font */
+        @import url('https://fonts.googleapis.com/css?family=Orbitron');
+
         body{
-          background: #000000;
+          background-color: #E6E6FA;
         }
-        .clock{
-          position: absolute;
-          top: 50%;
-          left: 50%;
-          transform: translate(-50%) translate(-50%);
+        #clock{
+          font-family: 'Orbitron', sans-sans-serif;
           color: #20B2AA;
-          font-size: 80px;
-          border: 30px solid #ccc;
-          padding: 0px 5px 0px 5px
+          font-size: 56px;
+          text-align: center;
+          padding-top: 40px 0px 40px 0px;
         }
         </style>
     </head>
     <body>
-      <div id="MyClockDisplay" class="clock"></div>
-      <script type="text/javascript">
-
-        function showTime(){
-          var date = new Date();
-          var h = date.getHours(); // 0-23
-          var m = date.getMinutes();// 0-59
-          var s = date.getSeconds();// 0-59
-          var session = "AM";
-
-          if(h ==0){
-            h = 12;
-          }
-
-          if(h > 12){
-            h = h - 12;
-            session = "PM";
-          }
-
-          h = (h < 10) ? "0" + h : h;
-          m = (m < 10) ? "0" + m : m;
-          s = (s < 10) ? "0" + s : s;
-
-          var time = h + ":" + m + ":" + s + " " + session;
-          document.getElementById("MyClockDisplay").innerText = time;
-          document.getElementById("MyClockDisplay").textContent = time;
-
-
-        setTimeout(showTime, 1000);
-}
-        showTime();
-        </script>
-
+      <div id="clock"></div>
+      <script>
+      function currentTime(){
+        var date = new Date();
+        var hour = date.getHours();
+        var min = date.getMinutes();
+        var sec = date.getSeconds();
+        hour = updateTime(hour);
+        min = updateTime(min);
+        sec = updateTime(sec);
+        document.getElementById("clock").innerText = hour + " : " + min " : " + sec;
+        /*this is giving the time to the div */
+      }
+      </script>
         <a class="link" href="index.html"><p style="text-align:center"> Home </a>
     </body>
 </html>
